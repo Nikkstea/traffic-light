@@ -101,19 +101,50 @@
         <div class="light green" onclick="activateLight(this, 'green')"></div>
     </div>
 
-    <script>
-        function activateLight(element, color) {
-            
-            document.querySelectorAll('.light').forEach(light => light.classList.remove('active'));
-            
-            
-            element.classList.add('active');
+   <script>
+        const activeLights = new Set();
+        let confettiLaunched = false;
 
-            
-            setTimeout(() => {
-                element.classList.remove('active');
-            }, 5000);
+        function activateLight(element, color) {
+           
+            if (element.classList.contains('active')) return;
+
+          
+            element.classList.add('active');
+            activeLights.add(color);
+
+           
+            if (activeLights.size === 3 && !confettiLaunched) {
+                confettiLaunched = true;
+                throwConfetti();
+            }
+        }
+
+        function throwConfetti() {
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.background = getRandomColor();
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.animationDuration =et confettiLaunched = false;
+
+                confetti.style.transform =       let confettiLaunched = false;
+
+
+                document.body.appendChild(confetti);
+
+               
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+
+        function getRandomColor() {
+            const colors = ['#FF5733', '#33FF57', '#3357FF', '#F4FF33', '#FF33A1'];
+            return colors[Math.floor(Math.random() * colors.length)];
         }
     </script>
 </body>
 </html>
+
