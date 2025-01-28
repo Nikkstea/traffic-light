@@ -73,14 +73,7 @@
                 transform: scale(0);
             }
         }
-      .confetti {
-            position: absolute;
-            top: 0;
-            width: 10px;
-            height: 10px;
-            background: red;
-            border-radius: 50%;
-            animation: fall linear infinite;
+
         }
 
 
@@ -95,28 +88,7 @@
         <div class="light green" onclick="activateLight(this, 'green')"></div>
     </div>
 
-   <script>
-        const activeLights = new Set();
-        let confettiLaunched = false;
 
-        function activateLight(element, color) {
-           
-            if (element.classList.contains('active')) return;
-
-          
-            element.classList.add('active');
-            activeLights.add(color);
-
-           
-    
-
-  
-            }
-        
-
-     
-        }
-    </script>
 </body>
 </html>
 
